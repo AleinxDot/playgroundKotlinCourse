@@ -1,6 +1,7 @@
 package functions
 
 class FunctionsPlayground {
+
     fun main(args : Array<String>){
         val timeInInt = args[0].toInt();
         if(timeInInt !in 0..23) {
@@ -12,4 +13,8 @@ class FunctionsPlayground {
         }
 
     }
+
+
+
+
 }
