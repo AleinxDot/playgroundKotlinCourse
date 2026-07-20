@@ -1,5 +1,8 @@
 package functions
 
+import java.util.Random
+
+
 class FunctionsPlayground {
 
     fun main(args : Array<String>){
@@ -11,10 +14,17 @@ class FunctionsPlayground {
             val message = "Good ${if (timeInInt < 12) "morning" else "evening"}, Kotlin."
             println(message);
         }
+        feedFish()
 
     }
-
-
-
+    fun feedFish(){
+        val day = randomDay()
+        val food = "pellets"
+        println("Today is $day and the fish eat $food")
+    }
+    fun randomDay() : String{
+        val week= listOf("Monday","Tuesday","Wednesday","Thursday", "Friday","Saturday","Sunday")
+        return week[Random().nextInt(7)]
+    }
 
 }
