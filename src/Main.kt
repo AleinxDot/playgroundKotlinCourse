@@ -1,6 +1,4 @@
-import functions.FunctionsPlayground
-
-fun main(args: Array<String>) {
+fun main() {
     //Configurar los parámetros desde la configuración de IntelliJ IDEA
-    FunctionsPlayground().main(args)
+    println("Hello Kotlin!")
 }
