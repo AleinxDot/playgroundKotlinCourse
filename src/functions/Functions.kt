@@ -13,20 +13,39 @@ fun main(args : Array<String>){
         println(message)
     }
     feedFish()
+    eagerExample()
 
 }
+
+fun eagerExample() {
+    val decorations = listOf("rock", "pagoda", "plastic plant", "alligator", "flowerpot")
+    val eager = decorations.filter {it[0] == 'p'}
+    println(eager)
+
+    val filtered = decorations.asSequence().filter {it[0] == 'p'}
+    println(filtered)
+    println(filtered.toList())
+
+}
+
+fun getDirtySensorReading() = 20
 
 fun shouldChangeWater(
     day: String,
     temperature: Int = 22,
-    dirty: Int = 20): Boolean{
-    return true
+    dirty: Int = getDirtySensorReading()): Boolean{
+
+    return when{
+        isTooHot(temperature) -> true
+        isDirty(dirty) -> true
+        isSunday(day) -> true
+        else -> false
+    }
 }
-fun shouldChangeWater2(
-    day: String,
-    temperature: Int = 22,
-    dirty: Int = 20
-){}
+
+fun isTooHot(temperature: Int) = temperature > 30
+fun isDirty(dirty: Int) = dirty > 30
+fun isSunday(day: String) = day == "Sunday"
 
 fun feedFish(){
     val day = randomDay()
@@ -35,12 +54,12 @@ fun feedFish(){
     shouldChangeWater(day,20, 50)
     shouldChangeWater(day)
     shouldChangeWater(day, dirty = 50)
-    shouldChangeWater2(day = "Monday")
+    shouldChangeWater(day = "Monday")
 
     if (shouldChangeWater(day)){
         println("Change the water today")
     }
-    // swim()
+    swim()
     if (canAddFish(10.0, listOf(), 7, true)){
         println("Can add fish")
     }else{println("Cannot add fish")}
@@ -77,3 +96,4 @@ fun fishFood(day: String) : String{
         else -> "fasting"
     }
 }
+
