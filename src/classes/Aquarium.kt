@@ -10,5 +10,11 @@ class Aquarium {
         set(value) {
             height = (value * 1000) / (width * length)
         }
+    // Constructor
+    constructor(width: Int = 20, height: Int = 40, length: Int = 100) {
+        this.width = width
+        this.height = height
+        this.length = length
+    }
 
 }
